@@ -19,14 +19,14 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private List<Movie>list=new ArrayList<>();
-    private View.OnClickListener onClickListener;
+    private OnClickListener clickListener;
 
     public MovieAdapter(List<Movie>list){
         this.list=list;
     }
 
-    public void setOnClickListener (View.OnClickListener onClickListener){
-        this.onClickListener=onClickListener;
+    public void setClickListener (OnClickListener clickListener){
+        this.clickListener= clickListener;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final int type=getItemViewType(position);
-        ((MovieViewHolder)holder).bind(list.get(position),position,onClickListener);
+        ((MovieViewHolder)holder).bind(list.get(position),position, clickListener);
 
     }
 

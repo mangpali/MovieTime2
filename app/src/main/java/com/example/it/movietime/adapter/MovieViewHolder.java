@@ -14,20 +14,22 @@ import com.squareup.picasso.Picasso;
  */
 
 public class MovieViewHolder extends RecyclerView.ViewHolder {
-
     ImageView img;
 
     public MovieViewHolder(View itemView) {
         super(itemView);
         img=(ImageView)itemView.findViewById(R.id.iv_poster);
-        itemView.setOnClickListener((View.OnClickListener) this);
     }
-    public void bind(Movie data, int position, View.OnClickListener onClickListener){
-        {
-            Picasso.with(itemView.getContext()).
-                    load(APIConfig.getMoviePosterURL("w342",
-                            data.getPoster_path())).
-                    into(img);
-        }
+    public void bind(final Movie data, final int position, final OnClickListener onClickListener){
+        Picasso.with(itemView.getContext()).
+                load(APIConfig.getMoviePosterURL("w342",
+                        data.getPoster_path())).
+                into(img);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickListener.onItemClick(data,position);
+            }
+        });
     }
 }

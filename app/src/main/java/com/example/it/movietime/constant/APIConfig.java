@@ -13,4 +13,13 @@ public class APIConfig {
     {
         return  "http://image.tmdb.org/t/p/" + dim + file;
     }
+
+    public static String getPageMovie(int shortInt) {
+        return getMoviePopular();
+
+    }
+
+    private static String getMoviePopular() {
+        return HOST_URL + PAGE_MOVIE + "/" + PAGE_MOVIE_POPULAR;
+    }
 }
